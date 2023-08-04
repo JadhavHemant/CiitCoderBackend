@@ -16,7 +16,7 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
-from MyApp.Apis import TopicRestApi,ContentRestApi
+from MyApp.Apis import TopicRestApi,ContentRestApi,PostCategoriesRestApi,StatesRestApi,CitysRestApi,LocationRestApi
 
 urlpatterns = [
                      # Topic Apis
@@ -28,7 +28,29 @@ urlpatterns = [
 
     path('api/content', ContentRestApi.contentApis.as_view()),  # GET AND POST data in apis/content
     path('api/content/udatedelete/<int:pk>/', ContentRestApi.ContentApiUpdateDeleteApi.as_view()), # update/delete/ data in apis/content
+
+                      # Post Category Api
+    path('api/postcateger', PostCategoriesRestApi.PostCateApi.as_view()),
+    path('api/postcateger/<int:pk>', PostCategoriesRestApi.PostCateApi.as_view()), 
+
+                     # State Apis
+    path('api/states', StatesRestApi.StateApi.as_view()),
+    path('api/states', StatesRestApi.StateUpdateDeleteApi.as_view()), 
+                      
+
+                     # City Apis
+    path('api/states', CitysRestApi.CityApi.as_view()),
+    path('api/states/<int:pk>/', CitysRestApi.CityUpdateDeleteApi.as_view()),  
     
+                     #  Locations API  
+                     
+    path('api/locations', LocationRestApi.LocationApi.as_view()),
+    path('api/locations/<int:pk>/', LocationRestApi.LocationUpdateDeleteApi.as_view()),  
+                      
+ 
+                     
+                     
+    # path('api/Image', ImageRestApi.ImageApi.as_view()),
     
         
 ]

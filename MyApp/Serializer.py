@@ -320,8 +320,11 @@ class UpdateModelSerializer(serializers.ModelSerializer):
         model=UpdateModel
         fields=['id','update_date','update_title','update_desription','flag']
         
-        
-        
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=ImageModel
+        fields=['id','name','image']            
                
         
         

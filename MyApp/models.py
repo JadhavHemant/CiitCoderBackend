@@ -473,3 +473,17 @@ class UpdateModel(models.Model):
     def __str__(self):
         return self.update_date
 
+
+
+
+
+
+# ?///////////////////////////////////////////////////////////////////////////////////////////////////////////
+class ImageModel(models.Model):
+    name=models.CharField(max_length=255)
+    image=models.CharField(max_length=255)
+    class Meta:
+        ordering =('id',)
+        db_table='image_tbl'
+    def __str__(self):
+        return self.name
