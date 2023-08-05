@@ -1,23 +1,10 @@
-"""
-URL configuration for MyProject project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 # from django.contrib import admin
 from django.urls import path
 from MyApp.Apis import TopicRestApi,ContentRestApi,PostCategoriesRestApi,StatesRestApi,CitysRestApi,LocationRestApi
-
+from MyApp.Apis import QualificationRestApi,SpecializationRestApi,RoleRestApis,GenderRestApi,DesigRestApi,UserRestApi
+from MyApp.Apis import UserQualiRestApi,UseExpRestApi,UserPostRestApi,UserPostComment,UserPostReplyRestApi,UserPostLikeRestApi
+from MyApp.Apis import UserPostShareRestApi,UserPostLikeShareRestApi
 urlpatterns = [
                      # Topic Apis
 
@@ -31,7 +18,7 @@ urlpatterns = [
 
                       # Post Category Api
     path('api/postcateger', PostCategoriesRestApi.PostCateApi.as_view()),
-    path('api/postcateger/<int:pk>', PostCategoriesRestApi.PostCateApi.as_view()), 
+    path('api/postcateger/<int:pk>/', PostCategoriesRestApi.PostCateApi.as_view()), 
 
                      # State Apis
     path('api/states', StatesRestApi.StateApi.as_view()),
@@ -47,7 +34,69 @@ urlpatterns = [
     path('api/locations', LocationRestApi.LocationApi.as_view()),
     path('api/locations/<int:pk>/', LocationRestApi.LocationUpdateDeleteApi.as_view()),  
                       
- 
+                        # Qualification
+    path('api/qualification', QualificationRestApi.QualificationApi.as_view()),
+    path('api/qualification/<int:pk>/', QualificationRestApi.QualificationUpdateDeleteApi.as_view()),
+        
+                             # Spelization
+    path('api/spelization', SpecializationRestApi.SpeclizeApi.as_view()),
+    path('api/spelization/<int:pk>/', SpecializationRestApi.SpeclizeUpdateDeleteApi.as_view()),
+                   
+                   
+                             # Role
+    path('api/role', RoleRestApis.RoleApi.as_view()),
+    path('api/role/<int:pk>/', RoleRestApis.RoleUpdateDeleteApi.as_view()),
+                   
+                     
+                      # Gender
+    path('api/gender', GenderRestApi.GenderApi.as_view()),
+    path('api/gender/<int:pk>/', GenderRestApi.GenderUpdateDeleteApi.as_view()),
+                   
+                    # Designation
+    path('api/designation', DesigRestApi.DesigApi.as_view()),
+    path('api/designation/<int:pk>/', DesigRestApi.DesigUpdateDeleteApi.as_view()),
+                   
+                       # User
+    path('api/user', UserRestApi.UserApi.as_view()),
+    path('api/user/<int:pk>/', UserRestApi.UserUpdateDeleteApi.as_view()),
+                   
+                   # UserQuali
+    path('api/quali/user', UserQualiRestApi.UserQualiApi.as_view()),
+    path('api/quali/user/<int:pk>/', UserQualiRestApi.UserQualiUpdateDeleteApi.as_view()),
+                   
+                    
+                   # UserExperience
+    path('api/expe/user', UseExpRestApi.UserExpeApi.as_view()),
+    path('api/expe/user/<int:pk>/', UseExpRestApi.UserExpeUpdateDeleteApi.as_view()),
+                   
+                     # UserPost
+    path('api/user/posts', UserPostRestApi.UserPostApi.as_view()),
+    path('api/user/posts/<int:pk>/', UserPostRestApi.UserPostUpdateDeleteApi.as_view()),
+                   
+                    # UserPostComment
+    path('api/user/posts/comments', UserPostComment.UserPostCommentApi.as_view()),
+    path('api/user/posts/comments/<int:pk>/', UserPostComment.UserPostCommentUpdateDeleteApi.as_view()),
+                   
+                    # UserPostCommentReplys
+    path('api/user/posts/comments/reply', UserPostReplyRestApi.PostCommentReplyApi.as_view()),
+    path('api/user/posts/comments/reply/<int:pk>/', UserPostReplyRestApi.PostCommentReplyUpdateDeleteApi.as_view()),
+                   
+                    # UserDisPostLikeDislike
+    path('api/user/posts/dislike', UserPostLikeRestApi.PostlikeApi.as_view()),
+    path('api/user/posts/dislike/<int:pk>/', UserPostLikeRestApi.PostlikeUpdateDeleteApi.as_view()),
+                   
+                    # UserPostShare
+    path('api/user/posts/share', UserPostShareRestApi.PostShareApi.as_view()),
+    path('api/user/posts/share/<int:pk>/', UserPostShareRestApi.PostShareUpdateDeleteApi.as_view()),
+                   
+                   # UserPostLikeShare
+    path('api/user/posts/like/share', UserPostLikeShareRestApi.PostSharelikeApi.as_view()),
+    path('api/user/posts/like/share/<int:pk>/', UserPostLikeShareRestApi.PostSharelikeUpdateDeleteApi.as_view()),
+                   
+                   
+                   
+                   
+                     
                      
                      
     # path('api/Image', ImageRestApi.ImageApi.as_view()),
