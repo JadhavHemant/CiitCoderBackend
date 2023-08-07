@@ -4,7 +4,9 @@ from django.urls import path
 from MyApp.Apis import TopicRestApi,ContentRestApi,PostCategoriesRestApi,StatesRestApi,CitysRestApi,LocationRestApi
 from MyApp.Apis import QualificationRestApi,SpecializationRestApi,RoleRestApis,GenderRestApi,DesigRestApi,UserRestApi
 from MyApp.Apis import UserQualiRestApi,UseExpRestApi,UserPostRestApi,UserPostComment,UserPostReplyRestApi,UserPostLikeRestApi
-from MyApp.Apis import UserPostShareRestApi,UserPostLikeShareRestApi
+from MyApp.Apis import UserPostShareRestApi,UserPostLikeShareRestApi,AdminRestApi,CodePostRestApi,PostCommentReplyRestApi
+from MyApp.Apis import CodeCommentRestApi,LikeSharePostRestApi,JobOpenRestApi,CommentPostRestApi,CommentPostReplyReatApi
+from MyApp.Apis import PostDislikeRestApi,PostLikesSharesTableRestApi,UpdateRestApi
 urlpatterns = [
                      # Topic Apis
 
@@ -26,8 +28,8 @@ urlpatterns = [
                       
 
                      # City Apis
-    path('api/states', CitysRestApi.CityApi.as_view()),
-    path('api/states/<int:pk>/', CitysRestApi.CityUpdateDeleteApi.as_view()),  
+    path('api/city', CitysRestApi.CityApi.as_view()),
+    path('api/city/<int:pk>/', CitysRestApi.CityUpdateDeleteApi.as_view()),  
     
                      #  Locations API  
                      
@@ -93,11 +95,54 @@ urlpatterns = [
     path('api/user/posts/like/share', UserPostLikeShareRestApi.PostSharelikeApi.as_view()),
     path('api/user/posts/like/share/<int:pk>/', UserPostLikeShareRestApi.PostSharelikeUpdateDeleteApi.as_view()),
                    
+                   # Admin
+    path('api/admin', AdminRestApi.AdminApi.as_view()),
+    path('api/admin/<int:pk>/', AdminRestApi.AdminUpdateDeleteApi.as_view()),
                    
+                   # Code Post
+    path('api/codepost', CodePostRestApi.CodePostApis.as_view()),
+    path('api/codepost/<int:pk>/', CodePostRestApi.CodePostApiUpdateDeleteApi.as_view()),
                    
-                   
+                    #   Code Comment Reply
+    path('api/code/comment',CodeCommentRestApi.CodeCommentApis.as_view()),
+    path('api/code/comment/<int:pk>/', CodeCommentRestApi.CodeCommentApiUpdateDeleteApi.as_view()),
                      
                      
+                   # Code Comment Reply
+    path('api/codepost/reply', PostCommentReplyRestApi.CodeCommentReplayApis.as_view()),
+    path('api/codepost/reply/<int:pk>/', PostCommentReplyRestApi.CodeCommentReplayApiUpdateDeleteApi.as_view()),
+                     
+                     
+                     # Code Share
+    path('api/code/share/reply', LikeSharePostRestApi.CodeShareApis.as_view()),
+    path('api/code/share/reply/<int:pk>/', LikeSharePostRestApi.CodeShareApiUpdateDeleteApi.as_view()),
+                     
+                  # Job
+    path('api/job', JobOpenRestApi.JobApis.as_view()),
+    path('api/job/<int:pk>/', JobOpenRestApi.JobApiUpdateDeleteApi.as_view()),
+                     
+                   
+                      # Code Comment Reply
+    path('api/comment/post', CommentPostRestApi.CommentPostApis.as_view()),
+    path('api/comment/post/<int:pk>/', CommentPostRestApi.CommentPostApiUpdateDeleteApi.as_view()),
+                     
+                          # api/comment/post/reply
+    path('api/comment/post/reply', CommentPostReplyReatApi.CommentPostReplyApis.as_view()),
+    path('api/comment/post/reply/<int:pk>/', CommentPostReplyReatApi.CommentPostReplyApiUpdateDeleteApi.as_view()),
+                                    
+                    #   api/comment/post/reply
+    path('api/comment/post/dislike', PostDislikeRestApi.PostDislikeReplyApis.as_view()),
+    path('api/comment/post/dislike/<int:pk>/', PostDislikeRestApi.PostDislikeApiUpdateDeleteApi.as_view()),
+                                    
+                                    #   api/Code/share
+    path('api/code/share/like', PostLikesSharesTableRestApi.PostLikesSharesTableApis.as_view()),
+    path('api/code/share/like/<int:pk>/', PostLikesSharesTableRestApi.PostLikesSharesTableApiUpdateDeleteApi.as_view()),
+                                  
+                                  
+                                  
+    path('api/update/like', UpdateRestApi.UpdateApis.as_view()),
+    path('api/update/<int:pk>/', UpdateRestApi.UpdateUpdateDeleteApi.as_view()),
+                                                                      
                      
     # path('api/Image', ImageRestApi.ImageApi.as_view()),
     

@@ -220,6 +220,7 @@ class CodePostSerializer(serializers.ModelSerializer):
 # ---------------------------tbpost_comments Serializer ------------------------
 # API done Crud
 
+
 class PostCommentSerializer(serializers.ModelSerializer):
     post_id=PrimaryKeyRelatedField(queryset=CodePostModel.objects.all(),many=False) 
     comment_by_user=PrimaryKeyRelatedField(queryset=ContentModel.objects.all(),many=False)   
