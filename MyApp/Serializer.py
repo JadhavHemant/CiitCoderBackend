@@ -1,16 +1,14 @@
 from rest_framework import serializers
 from MyApp.models import *
 from rest_framework.relations import PrimaryKeyRelatedField
-# ---------------------------Topics Serializer ------------------------
-# API Done crud with filter
 
+# ---------------------------Topics Serializer ------------------------
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model=TopicsModel
         fields=['id','topic_name','flag']
 
 # ---------------------------Content Serializer ------------------------
-# API Done crud 
 
 class ContentSerializer(serializers.ModelSerializer):
     topic_id=PrimaryKeyRelatedField(queryset=TopicsModel.objects.all(),many=False)
@@ -19,7 +17,6 @@ class ContentSerializer(serializers.ModelSerializer):
         fields=['id','content_name','topic_id','flag']
 
 # ---------------------------Postcategories Serializer ------------------------
-# API Done crud 
 
 class PostcategoriesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,15 +24,13 @@ class PostcategoriesSerializer(serializers.ModelSerializer):
         fields=['id','category_name','flag']
         
 # ---------------------------States Serializer ------------------------
-# API Done crud 
 
 class StateSerializer(serializers.ModelSerializer):
     class Meta:
         model=StatesModel
         fields=['id','state_Name','flag']     
 
-# ---------------------------States Serializer ------------------------
-# API Done crud 
+# ---------------------------City Serializer ------------------------
 
 class CitysSerializer(serializers.ModelSerializer):
     state_id=PrimaryKeyRelatedField(queryset=StatesModel.objects.all(),many=False)
@@ -46,7 +41,6 @@ class CitysSerializer(serializers.ModelSerializer):
         
         
 # ---------------------------Locations Serializer ------------------------
-# API Done crud 
 
 class LocationsSerializer(serializers.ModelSerializer):
     city_id=PrimaryKeyRelatedField(queryset=CitysModel.objects.all(),many=False)
@@ -55,8 +49,6 @@ class LocationsSerializer(serializers.ModelSerializer):
         fields=['id','location_name','city_id','flag']   
 
 # ---------------------------Qualifications Serializer ------------------------
-# API Done crud 
-
 
 class QualificationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -66,7 +58,6 @@ class QualificationSerializer(serializers.ModelSerializer):
         
  
 # ---------------------------Specializations Serializer ------------------------
-# API Done crud 
 
 class SpecializationsnSerializer(serializers.ModelSerializer):
     qualification_id=PrimaryKeyRelatedField(queryset=QualificationModel.objects.all(),many=False)
@@ -76,7 +67,6 @@ class SpecializationsnSerializer(serializers.ModelSerializer):
   
                
 # ---------------------------Roles Serializer ------------------------
-# API Done crud 
 
 class RolesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -85,7 +75,6 @@ class RolesSerializer(serializers.ModelSerializer):
         
                
 # ---------------------------Genders Serializer ------------------------
-# API Done crud 
 
 class GendersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -94,7 +83,6 @@ class GendersSerializer(serializers.ModelSerializer):
                                
         
 # ---------------------------Designations Serializer ------------------------
-# API Done crud 
 
 class DesignationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -103,7 +91,6 @@ class DesignationSerializer(serializers.ModelSerializer):
                                
                  
 # ---------------------------UserDetails Serializer ------------------------
-# API Done crud 
 
 class UserDetailsSerializer(serializers.ModelSerializer):
     gender_id=PrimaryKeyRelatedField(queryset=GenderModel.objects.all(),many=False)
@@ -115,7 +102,6 @@ class UserDetailsSerializer(serializers.ModelSerializer):
                                
                   
 # ---------------------------UserQualification Serializer ------------------------
-# API Done crud 
 
 class QualiSerializer(serializers.ModelSerializer):
     user_id=PrimaryKeyRelatedField(queryset=UserDetailsModel.objects.all(),many=False)
@@ -125,7 +111,6 @@ class QualiSerializer(serializers.ModelSerializer):
         fields=['id','user_id','specialization_id','university','passing_year','medium','percentage','flag'] 
                  
 # ---------------------------experience_details Serializer ------------------------
-# API Done crud 
 
 class ExperianceDetailsSerializer(serializers.ModelSerializer):
     user_id=PrimaryKeyRelatedField(queryset=UserDetailsModel.objects.all(),many=False)

@@ -25,8 +25,8 @@ class UserProfUpdateDeleteApi(APIView):
             raise status.HTTP_404_NOT_FOUND   
         
     def get(self, request, pk, format=None):
-        location = self.get_object(pk)
-        serializer = UserProfessionalExpertiseSerializer(location)
+        userpro = self.get_object(pk)
+        serializer = UserProfessionalExpertiseSerializer(userpro)
         return Response(serializer.data)
     
     def put(self, request, pk, format=None):

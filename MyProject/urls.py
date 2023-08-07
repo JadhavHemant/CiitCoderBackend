@@ -6,7 +6,7 @@ from MyApp.Apis import QualificationRestApi,SpecializationRestApi,RoleRestApis,G
 from MyApp.Apis import UserQualiRestApi,UseExpRestApi,UserPostRestApi,UserPostComment,UserPostReplyRestApi,UserPostLikeRestApi
 from MyApp.Apis import UserPostShareRestApi,UserPostLikeShareRestApi,AdminRestApi,CodePostRestApi,PostCommentReplyRestApi
 from MyApp.Apis import CodeCommentRestApi,LikeSharePostRestApi,JobOpenRestApi,CommentPostRestApi,CommentPostReplyReatApi
-from MyApp.Apis import PostDislikeRestApi,PostLikesSharesTableRestApi,UpdateRestApi
+from MyApp.Apis import PostDislikeRestApi,PostLikesSharesTableRestApi,UpdateRestApi,UserProfeRestApi
 urlpatterns = [
                      # Topic Apis
 
@@ -70,8 +70,12 @@ urlpatterns = [
                    # UserExperience
     path('api/expe/user', UseExpRestApi.UserExpeApi.as_view()),
     path('api/expe/user/<int:pk>/', UseExpRestApi.UserExpeUpdateDeleteApi.as_view()),
+    
+    path('api/user/posts', UserProfeRestApi.UserProfApi.as_view()),
+    path('api/user/posts/<int:pk>/', UserProfeRestApi.UserProfUpdateDeleteApi.as_view()),
                    
-                     # UserPost
+                   
+                     # UserPost 
     path('api/user/posts', UserPostRestApi.UserPostApi.as_view()),
     path('api/user/posts/<int:pk>/', UserPostRestApi.UserPostUpdateDeleteApi.as_view()),
                    
